@@ -1,0 +1,192 @@
+{
+  "selected_model": "Logistic Regression",
+  "n_total": 5780,
+  "n_train": 4626,
+  "n_test": 1154,
+  "dataset_by_language": {
+    "english": {
+      "legit": 4610,
+      "scam": 724
+    },
+    "hindi": {
+      "legit": 107,
+      "scam": 112
+    },
+    "hinglish": {
+      "legit": 117,
+      "scam": 110
+    }
+  },
+  "dataset_by_source": {
+    "uci_sms": 5106,
+    "synthetic_seed": 674
+  },
+  "holdout": {
+    "Logistic Regression": {
+      "accuracy": 0.9679376083188909,
+      "precision": 0.8632075471698113,
+      "recall": 0.9581151832460733,
+      "f1": 0.9081885856079405,
+      "confusion_matrix": [
+        [
+          934,
+          29
+        ],
+        [
+          8,
+          183
+        ]
+      ],
+      "cv_f1": 0.8980279933111748,
+      "best_params": {
+        "clf__C": 20
+      }
+    },
+    "Multinomial Naive Bayes": {
+      "accuracy": 0.9462738301559792,
+      "precision": 0.774468085106383,
+      "recall": 0.9528795811518325,
+      "f1": 0.8544600938967136,
+      "confusion_matrix": [
+        [
+          910,
+          53
+        ],
+        [
+          9,
+          182
+        ]
+      ],
+      "cv_f1": 0.8777242373475479,
+      "best_params": {
+        "clf__alpha": 0.05
+      }
+    }
+  },
+  "holdout_per_slice": [
+    {
+      "slice": "language=english",
+      "n": 1070,
+      "accuracy": 0.9748,
+      "precision": 0.8782,
+      "recall": 0.9448,
+      "f1": 0.9103
+    },
+    {
+      "slice": "language=hindi",
+      "n": 39,
+      "accuracy": 0.7949,
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333
+    },
+    {
+      "slice": "language=hinglish",
+      "n": 45,
+      "accuracy": 0.9556,
+      "precision": 0.9286,
+      "recall": 1.0,
+      "f1": 0.963
+    },
+    {
+      "slice": "source=uci_sms (real English SMS only)",
+      "n": 1024,
+      "accuracy": 0.9902,
+      "precision": 0.9836,
+      "recall": 0.9375,
+      "f1": 0.96
+    }
+  ],
+  "unseen": {
+    "overall": {
+      "accuracy": 0.9027777777777778,
+      "precision": 0.8918918918918919,
+      "recall": 0.9166666666666666,
+      "f1": 0.9041095890410958,
+      "confusion_matrix": [
+        [
+          32,
+          4
+        ],
+        [
+          3,
+          33
+        ]
+      ]
+    },
+    "per_language": {
+      "english": {
+        "accuracy": 0.8333333333333334,
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334,
+        "f1": 0.8333333333333334,
+        "n": 24
+      },
+      "hindi": {
+        "accuracy": 0.9583333333333334,
+        "precision": 0.9230769230769231,
+        "recall": 1.0,
+        "f1": 0.96,
+        "n": 24
+      },
+      "hinglish": {
+        "accuracy": 0.9166666666666666,
+        "precision": 0.9166666666666666,
+        "recall": 0.9166666666666666,
+        "f1": 0.9166666666666666,
+        "n": 24
+      }
+    },
+    "errors": [
+      {
+        "language": "english",
+        "label": 1,
+        "pred": 0,
+        "confidence": 0.805,
+        "message": "Hi dear, I am stuck at the airport and my card is not working. Please transfer Rs 15000 to this UPI id, will pay back."
+      },
+      {
+        "language": "english",
+        "label": 1,
+        "pred": 0,
+        "confidence": 0.504,
+        "message": "Your WhatsApp will be deactivated in 1 hour. Forward the 6-digit code you just received to verify."
+      },
+      {
+        "language": "english",
+        "label": 0,
+        "pred": 1,
+        "confidence": 0.553,
+        "message": "Your OTP for Swiggy login is 482913. Do not share this code with anyone."
+      },
+      {
+        "language": "english",
+        "label": 0,
+        "pred": 1,
+        "confidence": 0.857,
+        "message": "Rs 1,250 spent on your HDFC card ending 4521 at Big Bazaar on 02-Nov. Not you? Call the number on the back of your card."
+      },
+      {
+        "language": "hinglish",
+        "label": 1,
+        "pred": 0,
+        "confidence": 0.786,
+        "message": "Aapka WhatsApp 1 ghante mein band ho jayega. Abhi aaye 6 digit code ko hume forward karo."
+      },
+      {
+        "language": "hinglish",
+        "label": 0,
+        "pred": 1,
+        "confidence": 0.899,
+        "message": "Aapke HDFC card ending 4521 se Big Bazaar mein Rs 1,250 kharch hue 02-Nov ko. Aapne nahi kiya? Card ke peeche diye number par call karein."
+      },
+      {
+        "language": "hindi",
+        "label": 0,
+        "pred": 1,
+        "confidence": 0.95,
+        "message": "आपके एचडीएफसी कार्ड (4521) से 02 नवंबर को बिग बाजार में 1,250 रुपये खर्च हुए। आपने नहीं किया? कार्ड के पीछे दिए नंबर पर कॉल करें।"
+      }
+    ]
+  }
+}

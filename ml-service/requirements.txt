@@ -1,0 +1,10 @@
+# --- Prediction service (what you need to RUN the API) ---
+# Python 3.11+ required (scikit-learn 1.8). Versions are pinned because model.pkl /
+# vectorizer.pkl are scikit-learn pickles and must be loaded with the same version.
+fastapi==0.162.0
+uvicorn==0.54.0
+pydantic==2.14.2
+scikit-learn==1.8.0
+numpy==2.4.4
+scipy==1.17.1
+joblib==1.5.3
