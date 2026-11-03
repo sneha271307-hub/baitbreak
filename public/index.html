@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#06050b">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="BaitBreak: detect suspicious messages, identify scam signals and stay protected online.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BaitBreak | Digital Safety Intelligence">
+  <meta property="og:description" content="Paste a suspicious message and see the scam signals before you click.">
+  <meta name="twitter:card" content="summary">
+
+  <title>BaitBreak | Digital Safety Intelligence</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 220'%3E%3Cpath d='M100 8 L176 36 V104 C176 152 142 188 100 212 C58 188 24 152 24 104 V36 Z' fill='%231a0f4d' stroke='%237ff7ff' stroke-width='10' stroke-linejoin='round'/%3E%3Cg fill='none' stroke='%237ff7ff' stroke-width='11' stroke-linecap='round'%3E%3Cpath d='M108 44 V82'/%3E%3Cpath d='M108 106 V132 C108 164 66 164 66 134 V120'/%3E%3C/g%3E%3Cpath d='M114 80 L102 94 L112 94 L100 108' fill='none' stroke='white' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Logo symbol (used in the navbar) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="bbFill" gradientUnits="userSpaceOnUse" x1="100" y1="8" x2="100" y2="212"><stop offset="0" stop-color="#2d1678"/><stop offset="1" stop-color="#0f0830"/></linearGradient>
+      <linearGradient id="bbStroke" gradientUnits="userSpaceOnUse" x1="24" y1="8" x2="176" y2="212"><stop offset="0" stop-color="#7ff7ff"/><stop offset="0.55" stop-color="#5b8cff"/><stop offset="1" stop-color="#8a5bff"/></linearGradient>
+      <linearGradient id="bbHook" gradientUnits="userSpaceOnUse" x1="70" y1="40" x2="120" y2="160"><stop offset="0" stop-color="#7ff7ff"/><stop offset="1" stop-color="#6aa9ff"/></linearGradient>
+      <symbol id="bb-icon" viewBox="0 0 200 220">
+        <path d="M100 8 L176 36 V104 C176 152 142 188 100 212 C58 188 24 152 24 104 V36 Z" fill="url(#bbFill)" stroke="url(#bbStroke)" stroke-width="8" stroke-linejoin="round"/>
+        <g fill="none" stroke="#7ff7ff" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M34 66 H58 L66 74"/><path d="M166 66 H142 L134 74"/>
+          <path d="M30 122 H46 L56 132"/><path d="M170 122 H154 L144 132"/>
+        </g>
+        <g transform="translate(8 0)" fill="none" stroke="url(#bbHook)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="112" cy="38" r="6"/>
+          <path d="M112 44 V82"/>
+          <path d="M112 102 V128 C112 160 70 160 70 130 V118"/>
+          <path d="M70 124 L79 115"/>
+        </g>
+        <path transform="translate(8 0)" d="M118 80 L106 92 L116 92 L104 106" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="background-glow" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="#home" class="brand" aria-label="BaitBreak home">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 200 220" width="26" height="29"><use href="#bb-icon" width="200" height="220"></use></svg>
+      </span>
+      <span class="brand-name">BAIT<span>BREAK</span>
+        <small>DIGITAL SAFETY INTELLIGENCE</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#scanner">Scanner</a>
+      <a href="#protection">Protection</a>
+    </nav>
+
+    <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch website language">
+      <span aria-hidden="true">文A</span> हिंदी
+    </button>
+
+    <div class="auth-nav" id="auth-nav">
+
+      <div id="guest-nav">
+        <a href="login.html" class="login-nav-button">Login</a>
+        <a href="register.html" class="register-nav-button">Sign Up</a>
+      </div>
+
+      <div id="user-nav" hidden>
+        <span id="nav-user-name"></span>
+        <a href="dashboard.html" class="dashboard-nav-button">Dashboard</a>
+        <button id="logout-button" type="button">Logout</button>
+      </div>
+
+      <a href="#scanner" class="nav-button">
+        Start Scanning <span aria-hidden="true">↗</span>
+      </a>
+
+    </div>
+  </header>
+
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          YOUR DIGITAL SAFETY COMPANION
+        </div>
+
+        <h1>
+          DON'T TRUST<br>
+          EVERY <span>MESSAGE.</span>
+        </h1>
+
+        <p class="hero-description">
+          One suspicious message can put everything at risk.
+          Detect scam signals, check suspicious links and protect
+          yourself before you click.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#scanner" class="primary-button">
+            Scan a Message <span aria-hidden="true">⟶</span>
+          </a>
+
+          <a href="#protection" class="secondary-button">
+            Explore Protection
+          </a>
+        </div>
+
+        <ul class="hero-features">
+          <li><span aria-hidden="true">✦</span> Message intelligence</li>
+          <li><span aria-hidden="true">✦</span> Scam signal detection</li>
+          <li><span aria-hidden="true">✦</span> Simple safety guidance</li>
+        </ul>
+
+      </div>
+
+      <!-- FLOATING CUBES (CSS 3D, no images or scripts needed) -->
+      <div class="hero-visual" aria-hidden="true">
+        <div id="guardian-3d" hidden></div>
+
+        <div class="cubes">
+          <div class="cube" style="--s:112px;--x:4%;--y:34%;--rx:-18deg;--ry:32deg;--rz:6deg;--dur:9s"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cube" style="--s:88px;--x:50%;--y:6%;--rx:-24deg;--ry:-28deg;--rz:-8deg;--dur:11s"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cube" style="--s:70px;--x:80%;--y:-2%;--rx:-30deg;--ry:40deg;--rz:12deg;--dur:8s"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cube" style="--s:100px;--x:68%;--y:36%;--rx:-20deg;--ry:-36deg;--rz:-4deg;--dur:10s"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cube" style="--s:122px;--x:30%;--y:58%;--rx:-26deg;--ry:22deg;--rz:8deg;--dur:12s"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cube" style="--s:140px;--x:64%;--y:72%;--rx:-16deg;--ry:-30deg;--rz:5deg;--dur:9.5s"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="visual-caption">PAUSE. ANALYZE. PROTECT.</div>
+      </div>
+
+    </section>
+
+
+    <!-- SCANNER SECTION -->
+    <section class="scanner-section" id="scanner">
+
+      <div class="section-heading">
+        <div class="eyebrow">INTELLIGENT MESSAGE ANALYSIS</div>
+        <h2>Every message has a story.<br><span>Let's uncover it.</span></h2>
+        <p>Paste a suspicious message below. BaitBreak will examine its warning signals.</p>
+      </div>
+
+      <div class="analyzer-card">
+
+        <div class="scanner-top">
+          <div>
+            <span class="section-label">BAITBREAK SCANNER / 001</span>
+            <h2>Analyze a message</h2>
+            <p>Check before you trust. Your safety starts here.</p>
+          </div>
+
+          <div class="scanner-symbol" aria-hidden="true">⌕</div>
+        </div>
+
+        <div class="scanner-status" role="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          INTELLIGENCE ENGINE READY
+          <span class="scanner-version">SYSTEM ACTIVE</span>
+        </div>
+
+        <form id="analyze-form" novalidate>
+
+          <div class="example-row">
+            <span class="example-label">Try an example:</span>
+            <button type="button" class="example-chip" data-example="Your PM Kisan benefit is pending. Install this app to claim it: http://pmkisan-help.xyz/verify.apk and enter your OTP to receive the money today.">Fake benefit</button>
+            <button type="button" class="example-chip" data-example="SBI Alert: Your KYC has expired. Account will be blocked today. Update now: http://sbi-kyc-update.xyz and enter your card number, CVV and OTP.">Bank KYC</button>
+            <button type="button" class="example-chip" data-example="Aapka SIM kal band ho jayega. Turant verify karein aur apna OTP bhejiye.">Hinglish OTP</button>
+            <button type="button" class="example-chip" data-example="HDFC Bank: Rs 1,250 debited from your account ending 4521. OTP for your transaction is 482913. Do not share OTP with anyone.">Genuine alert</button>
+          </div>
+
+          <label for="message-input">PASTE YOUR MESSAGE</label>
+
+          <textarea
+            id="message-input"
+            name="message"
+            rows="6"
+            maxlength="10000"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="scanner-hint char-count"
+            placeholder="Example: Congratulations! Your government subsidy is approved. Download this APK immediately to claim your benefit..."
+            required
+          ></textarea>
+
+          <div class="input-footer">
+            <span id="char-count">0 / 10000</span>
+            <button type="button" id="clear-button" class="text-button">
+              Clear message <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div class="scanner-hint" id="scanner-hint">
+            <span aria-hidden="true">ⓘ</span>
+            Your message is analyzed for configured scam warning signs.
+          </div>
+
+          <button type="submit" id="analyze-button" class="analyze-button">
+            <span id="button-label">
+              INITIATE SCAN <span aria-hidden="true">↗</span>
+            </span>
+            <span id="button-spinner" class="spinner" hidden></span>
+          </button>
+
+        </form>
+
+        <noscript>
+          <p class="noscript-note">The scanner needs JavaScript. Please enable it to analyze a message.</p>
+        </noscript>
+
+        <div id="error-message" class="error-box" role="alert" hidden></div>
+
+        <!-- SCANNING ANIMATION -->
+        <div id="scan-animation" class="scan-animation" role="status" hidden>
+          <div class="scan-line"></div>
+          <div class="scan-animation-content">
+            <div class="scan-loader"></div>
+            <h3>Analyzing message...</h3>
+            <p>Examining suspicious patterns and warning signals.</p>
+          </div>
+        </div>
+
+        <!-- ANALYSIS RESULTS -->
+        <div id="results" class="results" aria-live="polite" hidden>
+
+          <div class="result-divider"></div>
+
+          <div class="result-heading">
+            <div>
+              <span class="section-label">THREAT INTELLIGENCE REPORT</span>
+              <h2>Analysis complete</h2>
+            </div>
+            <span id="risk-badge" class="risk-badge">CHECKING</span>
+          </div>
+
+          <div class="score-panel">
+
+            <div class="risk-gauge" id="risk-gauge">
+              <svg viewBox="0 0 160 160" aria-hidden="true">
+                <circle class="gauge-track" cx="80" cy="80" r="68"></circle>
+                <circle class="gauge-progress" id="gauge-progress" cx="80" cy="80" r="68"></circle>
+              </svg>
+
+              <div class="gauge-content">
+                <strong id="risk-score">0</strong>
+                <span>/ 100</span>
+                <small>RISK SCORE</small>
+              </div>
+            </div>
+
+            <div class="score-details">
+              <div class="score-topline">
+                <h3 id="risk-title">Analysis complete</h3>
+                <span id="score-label">THREAT SCORE</span>
+              </div>
+
+              <div class="threat-meter" aria-hidden="true">
+                <div id="threat-progress" class="threat-progress"></div>
+              </div>
+
+              <p id="risk-summary">
+                Review the signals below before deciding what to do.
+              </p>
+            </div>
+          </div>
+
+          <section class="result-section">
+            <h3>01 / DETECTED WARNING SIGNALS</h3>
+            <div id="signals-list" class="signals-list"></div>
+          </section>
+
+          <section class="result-section">
+            <h3>02 / THREAT EXPLANATION</h3>
+            <p id="explanation-text" class="explanation-text"></p>
+          </section>
+
+          <section class="result-section">
+            <h3>03 / RECOMMENDED ACTIONS</h3>
+            <ul id="actions-list" class="actions-list"></ul>
+          </section>
+
+          <p class="disclaimer">
+            BaitBreak identifies configured warning signs. A low score does not
+            guarantee that a message is safe. Verify important claims through
+            official channels.
+          </p>
+
+          <section class="result-section" id="warning-card-section">
+            <h3>04 / SHARE A SAFETY WARNING</h3>
+            <p class="warning-card-intro">Create a shareable safety reminder based on this analysis.</p>
+            <div id="warning-card-preview" class="warning-card-preview" aria-live="polite">
+              <div class="warning-card-brand">BAIT<span>BREAK</span> <small>DIGITAL SAFETY</small></div>
+              <div class="warning-card-status" id="warning-card-status">MESSAGE CHECK</div>
+              <div class="warning-card-score"><strong id="warning-card-score">—</strong><span>/ 100 RISK SCORE</span></div>
+              <p id="warning-card-summary">Analyze a message to create its warning card.</p>
+              <div class="warning-card-signals" id="warning-card-signals"></div>
+              <div class="warning-card-footer">PAUSE. VERIFY. PROTECT. · BaitBreak</div>
+            </div>
+            <div class="warning-card-actions">
+              <button type="button" id="download-warning-card" class="secondary-button">Download PNG</button>
+              <button type="button" id="share-warning-whatsapp" class="primary-button">Share on WhatsApp ↗</button>
+            </div>
+            <p class="warning-card-note">The card summarizes detected warning signs; it is not proof that a message is fraudulent or safe.</p>
+          </section>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="feature-bar" aria-label="What BaitBreak does">
+      <div>
+        <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
+        <span class="feature-number">01</span>
+        <strong>Message Analysis</strong>
+        <small>Identify suspicious wording</small>
+      </div>
+
+      <div>
+        <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+        <span class="feature-number">02</span>
+        <strong>Link Awareness</strong>
+        <small>Check suspicious URLs</small>
+      </div>
+
+      <div>
+        <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <span class="feature-number">03</span>
+        <strong>Safety Guidance</strong>
+        <small>Know what to do next</small>
+      </div>
+
+      <div>
+        <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+        <strong>Hindi and Hinglish</strong>
+        <small>Read results in Hindi or English, and scan Hinglish messages</small>
+      </div>
+
+      <div>
+        <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v7h16v-7M12 3v12M8 7l4-4 4 4"/></svg>
+        <strong>Shareable warning card</strong>
+        <small>Download a card or send a warning on WhatsApp</small>
+      </div>
+
+      <div>
+        <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+        <strong>Know where to report</strong>
+        <small>Call 1930 or report at cybercrime.gov.in if you've been scammed</small>
+      </div>
+    </section>
+
+
+    <!-- PROTECTION -->
+    <section class="protection-section" id="protection">
+
+      <div class="section-heading">
+        <div class="eyebrow">YOUR DIGITAL DEFENCE</div>
+        <h2>Small precautions.<br><span>Stronger protection.</span></h2>
+        <p>Recognize common tactics used in suspicious messages.</p>
+      </div>
+
+      <div class="protection-grid">
+
+        <article class="protection-card">
+          <div class="protection-icon" aria-hidden="true">⌁</div>
+          <span class="card-number">01 / OTP SAFETY</span>
+          <h3>Never share your OTP</h3>
+          <p>Never reveal your OTP, PIN or password, even if someone claims to represent a government department or bank.</p>
+        </article>
+
+        <article class="protection-card">
+          <div class="protection-icon" aria-hidden="true">↗</div>
+          <span class="card-number">02 / LINK SAFETY</span>
+          <h3>Question unknown links</h3>
+          <p>Look carefully at website addresses. A familiar-looking name does not automatically mean a website is genuine.</p>
+        </article>
+
+        <article class="protection-card">
+          <div class="protection-icon" aria-hidden="true">⬡</div>
+          <span class="card-number">03 / APK SAFETY</span>
+          <h3>Avoid unknown APKs</h3>
+          <p>Do not install applications sent through unsolicited messages. Use trusted app stores and official sources.</p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- SAFETY BANNER -->
+    <section class="safety-banner">
+      <div>
+        <span class="eyebrow">A REMINDER FROM BAITBREAK</span>
+        <h2>Pause before you trust.<br><span>Check before you click.</span></h2>
+      </div>
+
+      <a href="#scanner" class="primary-button">
+        Check a Message <span aria-hidden="true">⟶</span>
+      </a>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <a href="#home" class="footer-brand">BAIT<span>BREAK</span></a>
+    <p>Digital safety intelligence for everyone.</p>
+    <p>Built to encourage safer digital decisions.</p>
+    <p>Already shared an OTP or sent money? Call <strong>1930</strong> or report at
+      <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a>.</p>
+  </footer>
+
+
+  <!-- BAITBREAK GUARDIAN CHAT (hidden in style.css; remove that rule to show it) -->
+  <div class="guardian-widget">
+
+    <div class="guardian-panel" id="guardian-panel" role="dialog" aria-label="BaitBreak Guardian" hidden>
+      <div class="guardian-header">
+        <div class="guardian-avatar" aria-hidden="true">B</div>
+        <div>
+          <h3>BaitBreak Guardian</h3>
+          <span><i aria-hidden="true"></i> Security assistant online</span>
+        </div>
+        <button id="guardian-close" type="button" aria-label="Close assistant">×</button>
+      </div>
+
+      <div class="guardian-chat" id="guardian-chat" aria-live="polite">
+        <div class="guardian-message">
+          Hello! I'm your BaitBreak Guardian.
+          Ask me about suspicious messages, links, OTPs or APK files.
+        </div>
+      </div>
+
+      <div class="guardian-questions">
+        <button type="button" data-question="otp">Can I share an OTP?</button>
+        <button type="button" data-question="links">How do I check a link?</button>
+        <button type="button" data-question="apk">Is an unknown APK safe?</button>
+      </div>
+    </div>
+
+    <button class="guardian-trigger" id="guardian-trigger" type="button"
+            aria-label="Open BaitBreak Guardian" aria-controls="guardian-panel">
+      <span class="guardian-core" aria-hidden="true">B</span>
+      <span class="guardian-pulse" aria-hidden="true"></span>
+    </button>
+
+  </div>
+
+  <script src="language.js" defer></script>
+  <script src="auth-ui.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050912">
+  <meta name="description" content="BaitBreak — Detect suspicious messages, identify scam signals and stay protected online.">
+
+  <title>BaitBreak | Digital Safety Intelligence</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+
+  <div class="background-glow"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="#" class="brand">
+      <span class="brand-icon">B</span>
+      <span class="brand-name">BAIT<span>BREAK</span>
+        <small>DIGITAL SAFETY INTELLIGENCE</small>
+      </span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#scanner">Scanner</a>
+      <a href="#protection">Protection</a>
+    </nav>
+
+    <a href="#scanner" class="nav-button">
+      Start Scanning <span>↗</span>
+    </a>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          <span class="pulse-dot"></span>
+          YOUR DIGITAL SAFETY COMPANION
+        </div>
+
+        <h1>
+          DON'T TRUST<br>
+          EVERY <span>MESSAGE.</span>
+        </h1>
+
+        <p class="hero-description">
+          One suspicious message can put everything at risk.
+          Detect scam signals, check suspicious links and protect
+          yourself before you click.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#scanner" class="primary-button">
+            Scan a Message <span>⟶</span>
+          </a>
+
+          <a href="#protection" class="secondary-button">
+            Explore Protection
+          </a>
+        </div>
+
+        <div class="hero-features">
+          <span>✦ Message intelligence</span>
+          <span>✦ Scam signal detection</span>
+          <span>✦ Simple safety guidance</span>
+        </div>
+
+      </div>
+
+
+      <!-- SHIELD VISUAL -->
+      <div class="hero-visual">
+
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="orbit orbit-three"></div>
+
+        <div class="shield">
+          <div class="shield-inner">
+            <span class="shield-letter">B</span>
+            <span class="shield-check">✓</span>
+          </div>
+        </div>
+
+        <div class="floating-card threat-card">
+          <span class="live-dot"></span>
+          <div>
+            <strong>THREAT DETECTION</strong>
+            <small>Intelligence interface ready</small>
+          </div>
+        </div>
+
+        <div class="floating-card protection-card">
+          <span class="mini-shield">⬡</span>
+          <div>
+            <strong>Stay Protected</strong>
+            <small>Think before you click.</small>
+          </div>
+        </div>
+
+        <div class="visual-caption">PAUSE. ANALYZE. PROTECT.</div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STATS / FEATURES -->
+    <section class="feature-bar">
+      <div>
+        <span class="feature-number">01</span>
+        <strong>Message Analysis</strong>
+        <small>Identify suspicious wording</small>
+      </div>
+
+      <div>
+        <span class="feature-number">02</span>
+        <strong>Link Awareness</strong>
+        <small>Check suspicious URLs</small>
+      </div>
+
+      <div>
+        <span class="feature-number">03</span>
+        <strong>Safety Guidance</strong>
+        <small>Know what to do next</small>
+      </div>
+    </section>
+
+
+    
+    <!-- SCANNER SECTION -->
+<section class="scanner-section" id="scanner">
+
+  <div class="section-heading">
+    <div class="eyebrow">INTELLIGENT MESSAGE ANALYSIS</div>
+    <h2>Every message has a story.<br><span>Let's uncover it.</span></h2>
+    <p>Paste a suspicious message below. BaitBreak will examine its warning signals.</p>
+  </div>
+
+  <div class="analyzer-card">
+
+    <div class="scanner-top">
+      <div>
+        <span class="section-label">BAITBREAK SCANNER / 001</span>
+        <h2>Analyze a message</h2>
+        <p>Check before you trust. Your safety starts here.</p>
+      </div>
+
+      <div class="scanner-symbol">⌕</div>
+    </div>
+
+    <div class="scanner-status">
+      <span class="status-dot"></span>
+      INTELLIGENCE ENGINE READY
+      <span class="scanner-version">SYSTEM ACTIVE</span>
+    </div>
+
+    <form id="analyze-form">
+
+      <label for="message-input">PASTE YOUR MESSAGE</label>
+
+      <textarea
+        id="message-input"
+        name="message"
+        rows="6"
+        maxlength="10000"
+        placeholder="Example: Congratulations! Your government subsidy is approved. Download this APK immediately to claim your benefit..."
+        required
+      ></textarea>
+
+      <div class="input-footer">
+        <span id="char-count">0 / 10000</span>
+        <button type="button" id="clear-button" class="text-button">
+          Clear message ×
+        </button>
+      </div>
+
+      <div class="scanner-hint">
+        <span>ⓘ</span>
+        Your message is analyzed for configured scam warning signs.
+      </div>
+
+      <button type="submit" id="analyze-button" class="analyze-button">
+        <span id="button-label">
+          INITIATE SCAN <span>↗</span>
+        </span>
+        <span id="button-spinner" class="spinner" hidden></span>
+      </button>
+
+    </form>
+
+    <div id="error-message" class="error-box" role="alert" hidden></div>
+
+    <!-- SCANNING ANIMATION -->
+    <div id="scan-animation" class="scan-animation" hidden>
+      <div class="scan-line"></div>
+      <div class="scan-animation-content">
+        <div class="scan-loader"></div>
+        <h3>Analyzing message...</h3>
+        <p>Examining suspicious patterns and warning signals.</p>
+      </div>
+    </div>
+
+    <!-- ANALYSIS RESULTS -->
+    <div id="results" class="results" aria-live="polite" hidden>
+
+      <div class="result-divider"></div>
+
+      <div class="result-heading">
+        <div>
+          <span class="section-label">THREAT INTELLIGENCE REPORT</span>
+          <h2>Analysis complete</h2>
+        </div>
+        <span id="risk-badge" class="risk-badge">CHECKING</span>
+      </div>
+
+      <div class="score-panel">
+  <div class="score-number">
+    <span id="risk-score">0</span>
+    <small>/100</small>
+  </div>
+
+  <div class="score-details">
+    <div class="score-topline">
+      <h3 id="risk-title">Analysis complete</h3>
+      <span id="score-label">THREAT SCORE</span>
+    </div>
+
+    <div class="threat-meter">
+      <div id="threat-progress" class="threat-progress"></div>
+    </div>
+
+    <p id="risk-summary">
+      Review the signals below before deciding what to do.
+    </p>
+  </div>
+</div>
+
+      <section class="result-section">
+        <h3>01 / DETECTED WARNING SIGNALS</h3>
+        <div id="signals-list" class="signals-list"></div>
+      </section>
+
+      <section class="result-section">
+        <h3>02 / THREAT EXPLANATION</h3>
+        <p id="explanation-text" class="explanation-text"></p>
+      </section>
+
+      <section class="result-section">
+        <h3>03 / RECOMMENDED ACTIONS</h3>
+        <ul id="actions-list" class="actions-list"></ul>
+      </section>
+
+      <p class="disclaimer">
+        BaitBreak identifies configured warning signs. A low score does not
+        guarantee that a message is safe. Verify important claims through
+        official channels.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+        <!-- KEEPING THE ORIGINAL RESULT IDS FOR app.js -->
+        <div id="results" class="results" aria-live="polite" hidden>
+
+          <div class="result-divider"></div>
+
+          <div class="result-heading">
+            <div>
+              <span class="section-label">ANALYSIS REPORT</span>
+              <h2>Your safety report</h2>
+            </div>
+            <span id="risk-badge" class="risk-badge">CHECKING</span>
+          </div>
+
+          <div class="score-panel">
+            <div class="score-number">
+              <span id="risk-score">0</span><small>/100</small>
+            </div>
+
+            <div>
+              <h3 id="risk-title">Analysis complete</h3>
+              <p id="risk-summary">Review the signals below.</p>
+            </div>
+          </div>
+
+          <section class="result-section">
+            <h3>◈ Detected warning signals</h3>
+            <div id="signals-list" class="signals-list"></div>
+          </section>
+
+          <section class="result-section">
+            <h3>◈ Why this matters</h3>
+            <p id="explanation-text" class="explanation-text"></p>
+          </section>
+
+          <section class="result-section">
+            <h3>◈ Recommended actions</h3>
+            <ul id="actions-list" class="actions-list"></ul>
+          </section>
+
+          <p class="disclaimer">
+            BaitBreak identifies configured warning signs. It cannot guarantee
+            that a message is safe or fraudulent. Always verify important claims
+            through official channels.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PROTECTION -->
+    <section class="protection-section" id="protection">
+
+      <div class="section-heading">
+        <div class="eyebrow">YOUR DIGITAL DEFENCE</div>
+        <h2>Small precautions.<br><span>Stronger protection.</span></h2>
+        <p>Recognize common tactics used in suspicious messages.</p>
+      </div>
+
+      <div class="protection-grid">
+
+        <article class="protection-card">
+          <div class="protection-icon">⌁</div>
+          <span class="card-number">01 / OTP SAFETY</span>
+          <h3>Never share your OTP</h3>
+          <p>Never reveal your OTP, PIN or password, even if someone claims to represent a government department or bank.</p>
+        </article>
+
+        <article class="protection-card">
+          <div class="protection-icon">↗</div>
+          <span class="card-number">02 / LINK SAFETY</span>
+          <h3>Question unknown links</h3>
+          <p>Look carefully at website addresses. A familiar-looking name does not automatically mean a website is genuine.</p>
+        </article>
+
+        <article class="protection-card">
+          <div class="protection-icon">⬡</div>
+          <span class="card-number">03 / APK SAFETY</span>
+          <h3>Avoid unknown APKs</h3>
+          <p>Do not install applications sent through unsolicited messages. Use trusted app stores and official sources.</p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- SAFETY BANNER -->
+    <section class="safety-banner">
+      <div>
+        <span class="eyebrow">A REMINDER FROM BAITBREAK</span>
+        <h2>Pause before you trust.<br><span>Check before you click.</span></h2>
+      </div>
+
+      <a href="#scanner" class="primary-button">
+        Check a Message ⟶
+      </a>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <a href="#" class="footer-brand">BAIT<span>BREAK</span></a>
+    <p>Digital safety intelligence for everyone.</p>
+    <p>Built to encourage safer digital decisions.</p>
+  </footer>
+
+</body>
+</html>
