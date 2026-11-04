@@ -11,7 +11,7 @@ const errorMessage = document.getElementById("error-message");
 const results = document.getElementById("results");
 const scanAnimation = document.getElementById("scan-animation");
 
-const API_URL = "/api/analyze";
+const API_URL = "https://baitbreak-1.onrender.com/api/analyze";
 const MAX_LENGTH = 10000;
 let lastAnalysisData = null;
 
@@ -105,7 +105,7 @@ form.addEventListener("submit", async (event) => {
       headers.Authorization = `Bearer ${token}`;
     }
 
-    const response = await fetch("https://baitbreak.onrender.com/api/analyze", {
+    const response = await fetch("https://baitbreak-1.onrender.com/api/analyze", {
       method: "POST",
       headers,
       body: JSON.stringify({ message })

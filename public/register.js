@@ -51,7 +51,7 @@ registerForm.addEventListener("submit", async (event) => {
     registerButton.innerHTML = "<span>Creating account...</span>";
 
     try {
-        const response = await fetch("https://baitbreak.onrender.com/api/auth/login", {
+        const response = await fetch("https://baitbreak-1.onrender.com/api/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

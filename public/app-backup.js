@@ -9,7 +9,7 @@ const errorMessage = document.getElementById("error-message");
 const results = document.getElementById("results");
 const scanAnimation = document.getElementById("scan-animation");
 
-const API_URL = "/api/analyze";
+const API_URL = "https://baitbreak-1.onrender.com/api/analyze";
 
 
 /* CHARACTER COUNTER */

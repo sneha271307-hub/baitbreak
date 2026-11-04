@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 5. FETCH SCAN HISTORY
     try {
 
-        const response = await fetch("/api/history", {
+        const response = await fetch("https://baitbreak-1.onrender.com/api/history", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
