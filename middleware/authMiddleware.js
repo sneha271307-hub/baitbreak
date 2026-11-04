@@ -38,6 +38,7 @@ if (!decoded.userId) {
         next();
 
     } catch (error) {
+         console.error("JWT verify failed:", err.message);
         return res.status(401).json({
             success: false,
             message: "Invalid or expired token"

@@ -35,31 +35,46 @@ loginForm.addEventListener("submit", async (event) => {
     loginButton.innerHTML = "<span>Signing in...</span>";
 
     try {
-        const response = await fetch("https://baitbreak-1.onrender.com/api/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
+        const response = await fetch(
+            "https://baitbreak-1.onrender.com/api/auth/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            }
+        );
 
-        const data = await response.json();
+        const data = await res.json();
+
+if (data.success && data.token) {
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("user", JSON.stringify(data.user));
+  window.location.href = "dashboard.html";
+} else {
+  alert(data.message || "Login failed");
+}
 
         if (!response.ok) {
-            throw new Error(data.message || data.error || "Login failed.");
+            throw new Error(
+                data.message || data.error || "Login failed."
+            );
         }
 
         if (!data.token) {
-            throw new Error("Login succeeded, but no authentication token was received.");
+            throw new Error(
+                "Login succeeded, but no authentication token was received."
+            );
         }
 
-        // Store token for this browser session
+        // Save token
         sessionStorage.setItem("baitbreakToken", data.token);
 
-        // Store user information if provided
+        // Save user information
         if (data.user) {
             sessionStorage.setItem(
                 "baitbreakUser",
@@ -70,13 +85,16 @@ loginForm.addEventListener("submit", async (event) => {
         showMessage("Login successful! Redirecting...", "success");
 
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "dashboard.html";
         }, 1000);
 
     } catch (error) {
+        console.error("Login error:", error);
         showMessage(error.message, "error");
+
     } finally {
         loginButton.disabled = false;
-        loginButton.innerHTML = "<span>Sign In</span><span>→</span>";
+        loginButton.innerHTML =
+            "<span>Sign In</span><span>→</span>";
     }
 });
