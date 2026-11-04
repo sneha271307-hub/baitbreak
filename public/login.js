@@ -42,44 +42,25 @@ loginForm.addEventListener("submit", async (event) => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    email,
-                    password
-                })
+                body: JSON.stringify({ email, password })
             }
         );
 
-        const data = await res.json();
-
-if (data.success && data.token) {
-  localStorage.setItem("token", data.token);
-  localStorage.setItem("user", JSON.stringify(data.user));
-  window.location.href = "dashboard.html";
-} else {
-  alert(data.message || "Login failed");
-}
+        const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(
-                data.message || data.error || "Login failed."
-            );
+            throw new Error(data.message || data.error || "Login failed.");
         }
 
         if (!data.token) {
-            throw new Error(
-                "Login succeeded, but no authentication token was received."
-            );
+            throw new Error("Login succeeded, but no authentication token was received.");
         }
 
-        // Save token
+        // Save token and user
         sessionStorage.setItem("baitbreakToken", data.token);
 
-        // Save user information
         if (data.user) {
-            sessionStorage.setItem(
-                "baitbreakUser",
-                JSON.stringify(data.user)
-            );
+            sessionStorage.setItem("baitbreakUser", JSON.stringify(data.user));
         }
 
         showMessage("Login successful! Redirecting...", "success");
@@ -94,7 +75,6 @@ if (data.success && data.token) {
 
     } finally {
         loginButton.disabled = false;
-        loginButton.innerHTML =
-            "<span>Sign In</span><span>→</span>";
+        loginButton.innerHTML = "<span>Sign In</span><span>→</span>";
     }
 });
