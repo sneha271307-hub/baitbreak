@@ -1,0 +1,313 @@
+{
+  "version": 1,
+  "engineNotes": [
+    "Lowercase every message before matching.",
+    "Match keywords on word boundaries. Without this, 'trai' matches 'train' and 'sbi' matches parts of other words. A keyword that starts or ends with a symbol such as '.apk' needs no boundary on that side.",
+    "Skip a keyword match if a negation word appears in the 40 characters before it. Do not apply this to rule R10, whose keywords are themselves negations.",
+    "Keyword rules also scan the text of links, so 'sbi-kyc-update.xyz' can match R02 and R03. This is acceptable and the expected results below allow for it.",
+    "Compare the engine's output to expected.level and expected.pattern first. Treat score as correct if within the scoreMin and scoreMax range."
+  ],
+  "scenarios": [
+    {
+      "id": "SC01",
+      "title": "Government benefit, APK, OTP (deck example)",
+      "language": "English",
+      "messages": [
+        {
+          "index": 1,
+          "text": "Your PM Kisan benefit is pending. Complete verification today to receive it.",
+          "mustMatchRules": [
+            "R01",
+            "R07"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Install this app to continue: http://pmkisan-help.xyz/verify.apk",
+          "mustMatchRules": [
+            "R12",
+            "R13",
+            "R16"
+          ]
+        },
+        {
+          "index": 3,
+          "text": "Enable permissions and enter your OTP to get the money.",
+          "mustMatchRules": [
+            "R17",
+            "R19"
+          ]
+        }
+      ],
+      "expected": {
+        "level": "HIGH",
+        "pattern": "S01",
+        "scoreMin": 92,
+        "scoreMax": 100
+      },
+      "demoNote": "Main demo. Mirrors the deck: benefit, install app, permissions and OTP. Show the risk meter rising message by message."
+    },
+    {
+      "id": "SC02",
+      "title": "Electricity bill disconnection (Hinglish)",
+      "language": "Hinglish",
+      "messages": [
+        {
+          "index": 1,
+          "text": "Dear customer, aapka bijli bill pending hai. Aaj raat 9:30 baje connection kat jayega.",
+          "mustMatchRules": [
+            "R08"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Turant is number par call karein: 98xxxxxx12. Ya link par click karein: bit.ly/pay-bill",
+          "mustMatchRules": [
+            "R07",
+            "R11",
+            "R14"
+          ]
+        },
+        {
+          "index": 3,
+          "text": "Bill update ke liye AnyDesk install karein aur 10 rupaye processing fee bhejiye.",
+          "mustMatchRules": [
+            "R18",
+            "R21"
+          ]
+        }
+      ],
+      "expected": {
+        "level": "HIGH",
+        "pattern": "S02",
+        "scoreMin": 72,
+        "scoreMax": 88
+      },
+      "demoNote": "Shows Hinglish support and a pressure-to-remote-access path."
+    },
+    {
+      "id": "SC03",
+      "title": "Fake bank KYC with lookalike link",
+      "language": "English",
+      "messages": [
+        {
+          "index": 1,
+          "text": "SBI Alert: Your KYC has expired. Account will be blocked today.",
+          "mustMatchRules": [
+            "R02",
+            "R03",
+            "R07",
+            "R08"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Update now: http://sbi-kyc-update.xyz",
+          "mustMatchRules": [
+            "R15",
+            "R16"
+          ]
+        },
+        {
+          "index": 3,
+          "text": "Enter your card number, CVV and the OTP sent to your phone.",
+          "mustMatchRules": [
+            "R20"
+          ]
+        }
+      ],
+      "expected": {
+        "level": "HIGH",
+        "pattern": "S01",
+        "scoreMin": 91,
+        "scoreMax": 100
+      },
+      "demoNote": "Shows lookalike domain detection. The domain sbi-kyc-update.xyz should also appear in seed reports so campaign correlation can find it."
+    },
+    {
+      "id": "SC04",
+      "title": "Digital arrest / fake authority",
+      "language": "English",
+      "messages": [
+        {
+          "index": 1,
+          "text": "This is Inspector Sharma from Cyber Cell. A parcel in your name has drugs. Case registered.",
+          "mustMatchRules": [
+            "R04",
+            "R09"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Do not tell anyone and do not disconnect the call. Arrest warrant will be issued.",
+          "mustMatchRules": [
+            "R10"
+          ]
+        },
+        {
+          "index": 3,
+          "text": "To clear your name, transfer Rs 25,000 to the safe account now.",
+          "mustMatchRules": [
+            "R21"
+          ]
+        }
+      ],
+      "expected": {
+        "level": "HIGH",
+        "pattern": "S02",
+        "scoreMin": 58,
+        "scoreMax": 74
+      },
+      "demoNote": "Shows fear and secrecy tactics. Note that no link is involved, so sequence logic matters more than URL checks."
+    },
+    {
+      "id": "SC05",
+      "title": "Part-time task / registration fee scam",
+      "language": "English",
+      "messages": [
+        {
+          "index": 1,
+          "text": "Part time job! Earn daily Rs 3000 from home. Just complete tasks and like and subscribe videos.",
+          "mustMatchRules": [
+            "R06"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Click here to join: https://tinyurl.com/earn-now",
+          "mustMatchRules": [
+            "R11",
+            "R14"
+          ]
+        },
+        {
+          "index": 3,
+          "text": "Pay Rs 500 registration fee to activate your account and receive commission.",
+          "mustMatchRules": [
+            "R21"
+          ]
+        }
+      ],
+      "expected": {
+        "level": "HIGH",
+        "pattern": "S01",
+        "scoreMin": 53,
+        "scoreMax": 69
+      },
+      "demoNote": "Shows that the same pattern appears in job and task scams."
+    },
+    {
+      "id": "SC06",
+      "title": "Fake refund with UPI collect request",
+      "language": "English",
+      "messages": [
+        {
+          "index": 1,
+          "text": "Congratulations! Your refund approved: Rs 4,999 will be credited to you.",
+          "mustMatchRules": [
+            "R01",
+            "R05"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Accept the UPI collect request on your Google Pay to receive it.",
+          "mustMatchRules": [
+            "R02",
+            "R21"
+          ]
+        }
+      ],
+      "expected": {
+        "level": "SUSPICIOUS",
+        "pattern": "S09",
+        "scoreMin": 38,
+        "scoreMax": 54
+      },
+      "demoNote": "Shows a SUSPICIOUS result that is not HIGH, which proves the levels are not all-or-nothing."
+    },
+    {
+      "id": "SC07",
+      "title": "SIM block threat then OTP (Hinglish)",
+      "language": "Hinglish",
+      "messages": [
+        {
+          "index": 1,
+          "text": "Aapka SIM kal band ho jayega. Turant verify karein.",
+          "mustMatchRules": [
+            "R07",
+            "R08"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Verification ke liye apna OTP bhejiye.",
+          "mustMatchRules": [
+            "R19"
+          ]
+        }
+      ],
+      "expected": {
+        "level": "HIGH",
+        "pattern": "S02",
+        "scoreMin": 48,
+        "scoreMax": 64
+      },
+      "demoNote": "Shortest example of a HIGH result: two messages. Good for a quick live demo."
+    },
+    {
+      "id": "SC08",
+      "title": "Genuine bank alert (benign)",
+      "language": "English",
+      "messages": [
+        {
+          "index": 1,
+          "text": "HDFC Bank: Rs 1,250 debited from your account ending 4521 on 28-Oct. If not you, call the number on the back of your card.",
+          "mustMatchRules": [
+            "R02"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "OTP for your transaction is 482913. Do not share OTP with anyone. - HDFC Bank",
+          "mustMatchRules": []
+        }
+      ],
+      "expected": {
+        "level": "LOW",
+        "pattern": null,
+        "scoreMin": 0,
+        "scoreMax": 14
+      },
+      "demoNote": "Must-show benign case. A genuine bank alert says 'Do not share OTP', so negation handling must keep this LOW."
+    },
+    {
+      "id": "SC09",
+      "title": "Weak evidence (Can't confirm)",
+      "language": "English",
+      "messages": [
+        {
+          "index": 1,
+          "text": "Hello, this is from your bank regarding your account.",
+          "mustMatchRules": [
+            "R02"
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Your KYC is pending. Please update it when you can.",
+          "mustMatchRules": [
+            "R03"
+          ]
+        }
+      ],
+      "expected": {
+        "level": "CANT_CONFIRM",
+        "pattern": null,
+        "scoreMin": 8,
+        "scoreMax": 24
+      },
+      "demoNote": "Shows the explicit Can't confirm outcome when evidence is weak."
+    }
+  ]
+}

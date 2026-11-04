@@ -1,0 +1,168 @@
+{
+  "version": 1,
+  "notes": "Evaluate patterns top to bottom. The first pattern whose path is found (in order, across messages) decides the level. Then apply the floor and score thresholds. Stages inside a single message count in this order: TRUST, PRESSURE, ACCESS, EXPLOITATION.",
+
+  "stageOrder": ["TRUST", "PRESSURE", "ACCESS", "EXPLOITATION"],
+
+  "scoring": {
+    "formula": "score = min(100, sumOfUniqueRuleWeights * 2 + patternBonus)",
+    "countEachRuleOnce": true
+  },
+
+  "criticalRules": ["R12", "R13", "R17", "R18", "R19", "R20"],
+
+  "negationWords": ["do not", "don't", "dont", "never", "not ask", "will not ask", "kabhi na", "kabhi nahi", "mat share", "na batayein", "na bataye"],
+  "negationWindowChars": 40,
+
+  "patterns": [
+    {
+      "id": "S01",
+      "name": "full_attack_chain",
+      "path": ["TRUST", "ACCESS", "EXPLOITATION"],
+      "level": "HIGH",
+      "bonus": 25,
+      "reason": "A trust claim was followed by a request to open or install something, and then by a request for secrets or money. This is the classic shape of a social-engineering attack."
+    },
+    {
+      "id": "S02",
+      "name": "pressure_to_exploitation",
+      "path": ["PRESSURE", "EXPLOITATION"],
+      "level": "HIGH",
+      "bonus": 20,
+      "reason": "A threat or time pressure was followed by a request for secrets or money. Attackers use pressure so people act before thinking."
+    },
+    {
+      "id": "S03",
+      "name": "access_to_exploitation",
+      "path": ["ACCESS", "EXPLOITATION"],
+      "level": "HIGH",
+      "bonus": 20,
+      "reason": "The user was pushed to open a link, install an app or grant access, and then asked for secrets or money."
+    },
+    {
+      "id": "S04",
+      "name": "trust_to_critical_access",
+      "path": ["TRUST", "ACCESS"],
+      "requiresAny": ["R12", "R13", "R17", "R18"],
+      "level": "HIGH",
+      "bonus": 15,
+      "reason": "A trust claim was followed by a request to install an app, open an installable file or grant sensitive access. This can give an attacker control of the device."
+    },
+    {
+      "id": "S05",
+      "name": "trust_to_secret_request",
+      "path": ["TRUST", "EXPLOITATION"],
+      "requiresAny": ["R19", "R20"],
+      "level": "HIGH",
+      "bonus": 18,
+      "reason": "An official-looking claim was followed by a request for an OTP or PIN. Genuine organisations never ask for these."
+    },
+    {
+      "id": "S06",
+      "name": "pressure_to_access",
+      "path": ["PRESSURE", "ACCESS"],
+      "level": "SUSPICIOUS",
+      "bonus": 10,
+      "reason": "Pressure was followed by a request to open a link or grant access. The pattern is concerning, but there is no request for secrets yet."
+    },
+    {
+      "id": "S07",
+      "name": "trust_to_pressure",
+      "path": ["TRUST", "PRESSURE"],
+      "level": "SUSPICIOUS",
+      "bonus": 10,
+      "reason": "An official-looking claim was combined with pressure. This is common in the early stage of scams."
+    },
+    {
+      "id": "S08",
+      "name": "trust_to_access",
+      "path": ["TRUST", "ACCESS"],
+      "level": "SUSPICIOUS",
+      "bonus": 8,
+      "reason": "An official-looking claim was followed by a request to open a link. Check the sender through an official channel."
+    },
+    {
+      "id": "S09",
+      "name": "trust_to_exploitation",
+      "path": ["TRUST", "EXPLOITATION"],
+      "level": "SUSPICIOUS",
+      "bonus": 10,
+      "reason": "A claim of authority or benefit was followed by a request for money or personal details."
+    }
+  ],
+
+  "floors": [
+    {
+      "id": "F01",
+      "name": "any_critical_signal",
+      "ifAnyRule": ["R12", "R13", "R17", "R18", "R19", "R20"],
+      "minimumLevel": "SUSPICIOUS",
+      "reason": "Contains a request that genuine services do not make: installing from outside a store, sensitive access, or a secret code."
+    }
+  ],
+
+  "scoreThresholds": {
+    "note": "Used when no pattern matched. Then the floor is applied.",
+    "highAtOrAbove": 60,
+    "suspiciousAtOrAbove": 30,
+    "cantConfirmAtOrAbove": 10,
+    "lowBelow": 10
+  },
+
+  "levels": {
+    "HIGH": {
+      "label": "Potential social-engineering attack sequence detected",
+      "color": "red",
+      "uncertainty": "This is an inference from the observed pattern. We cannot verify who the sender really is.",
+      "safeActions": [
+        "Stop. Do not reply, click, install or share anything.",
+        "Contact the organisation only through its official website or app, not through details in these messages.",
+        "If you shared an OTP, PIN or money, call your bank immediately and report at cybercrime.gov.in or helpline 1930.",
+        "Share this warning with people who may receive the same messages."
+      ]
+    },
+    "SUSPICIOUS": {
+      "label": "Suspicious signals found",
+      "color": "amber",
+      "uncertainty": "Some signals match scam patterns, but the evidence is not enough to be sure.",
+      "safeActions": [
+        "Pause before acting on these messages.",
+        "Verify the sender through an official website, app or phone number you find yourself.",
+        "Do not share any OTP, PIN, password or card details.",
+        "If more messages arrive, add them here for a fuller check."
+      ]
+    },
+    "CANT_CONFIRM": {
+      "label": "Can't confirm",
+      "color": "grey",
+      "uncertainty": "There is not enough evidence to decide either way. This is not a confirmation that the messages are safe.",
+      "safeActions": [
+        "Add any related earlier or later messages for a better assessment.",
+        "Verify the sender through an official channel if the message asks you to do anything.",
+        "Never share an OTP, PIN or password with anyone."
+      ]
+    },
+    "LOW": {
+      "label": "No known scam pattern found",
+      "color": "green",
+      "uncertainty": "BaitBreak found no known scam signals. This does not guarantee the messages are safe.",
+      "safeActions": [
+        "Stay careful with any link or request you did not expect.",
+        "Never share an OTP, PIN or password with anyone."
+      ]
+    }
+  },
+
+  "safeActionsByRule": {
+    "R12": "Do not install any app sent through a message. Install apps only from the official Play Store or App Store.",
+    "R13": "Do not open or download the linked file.",
+    "R14": "Do not trust shortened links. Type the official website address yourself.",
+    "R15": "The link imitates a trusted website. Check the exact spelling and use the official site instead.",
+    "R17": "Never grant accessibility, screen-sharing or overlay permissions to an app you did not choose to install.",
+    "R18": "Do not install or open remote-access apps for someone who contacted you.",
+    "R19": "Never share an OTP with anyone, including people claiming to be from your bank or the government.",
+    "R20": "Never share your PIN, CVV or card details through a message or call.",
+    "R21": "Do not send money or pay fees to receive a benefit, prize or refund.",
+    "R22": "Do not share passwords or identity numbers through messages."
+  }
+}

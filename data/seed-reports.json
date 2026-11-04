@@ -1,0 +1,669 @@
+{
+  "version": 1,
+  "notes": "SYNTHETIC demo data written for the BaitBreak prototype. These are not real victim reports. Say this clearly in your pitch. Match a new analysis against these by (1) a shared domain, (2) a similar domain base such as sbi-kyc-, (3) overlapping signal IDs (Jaccard 0.5 or higher), (4) a shared key phrase.",
+  "reports": [
+    {
+      "id": "SR001",
+      "reportedAt": "2026-10-02",
+      "region": "Uttar Pradesh",
+      "scamType": "fake_kyc",
+      "domains": [
+        "sbi-kyc-update.xyz"
+      ],
+      "signals": [
+        "R02",
+        "R03",
+        "R08",
+        "R15",
+        "R16",
+        "R20"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "kyc has expired",
+        "account will be blocked"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR002",
+      "reportedAt": "2026-10-05",
+      "region": "Delhi",
+      "scamType": "fake_kyc",
+      "domains": [
+        "sbi-kyc-update.xyz"
+      ],
+      "signals": [
+        "R02",
+        "R03",
+        "R07",
+        "R15",
+        "R16",
+        "R19"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "kyc has expired",
+        "update now"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR003",
+      "reportedAt": "2026-10-09",
+      "region": "Maharashtra",
+      "scamType": "fake_kyc",
+      "domains": [
+        "sbi-kyc-update.xyz"
+      ],
+      "signals": [
+        "R02",
+        "R03",
+        "R08",
+        "R15",
+        "R16",
+        "R20"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "account will be blocked",
+        "update now"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR004",
+      "reportedAt": "2026-10-14",
+      "region": "Bihar",
+      "scamType": "fake_kyc",
+      "domains": [
+        "sbi-kyc-verify.xyz"
+      ],
+      "signals": [
+        "R02",
+        "R03",
+        "R08",
+        "R15",
+        "R16",
+        "R19"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "kyc pending",
+        "account will be blocked"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR005",
+      "reportedAt": "2026-10-20",
+      "region": "Rajasthan",
+      "scamType": "fake_kyc",
+      "domains": [
+        "sbi-kyc-update.xyz"
+      ],
+      "signals": [
+        "R02",
+        "R03",
+        "R07",
+        "R15",
+        "R16",
+        "R20"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "kyc has expired",
+        "verify today"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR006",
+      "reportedAt": "2026-10-03",
+      "region": "Uttar Pradesh",
+      "scamType": "fake_govt_benefit_apk",
+      "domains": [
+        "pmkisan-help.xyz"
+      ],
+      "signals": [
+        "R01",
+        "R07",
+        "R12",
+        "R13",
+        "R15",
+        "R16",
+        "R17",
+        "R19"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "benefit is pending",
+        "install this app"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR007",
+      "reportedAt": "2026-10-08",
+      "region": "Madhya Pradesh",
+      "scamType": "fake_govt_benefit_apk",
+      "domains": [
+        "pmkisan-help.xyz"
+      ],
+      "signals": [
+        "R01",
+        "R12",
+        "R13",
+        "R15",
+        "R16",
+        "R17"
+      ],
+      "stages": [
+        "TRUST",
+        "ACCESS"
+      ],
+      "keyPhrases": [
+        "benefit is pending",
+        "enable permissions"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR008",
+      "reportedAt": "2026-10-15",
+      "region": "Haryana",
+      "scamType": "fake_govt_benefit_apk",
+      "domains": [
+        "pmkisan-help.xyz"
+      ],
+      "signals": [
+        "R01",
+        "R07",
+        "R12",
+        "R13",
+        "R15",
+        "R16",
+        "R19"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "install this app",
+        "enter your otp"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR009",
+      "reportedAt": "2026-10-22",
+      "region": "Punjab",
+      "scamType": "fake_govt_benefit_apk",
+      "domains": [
+        "pm-kisan-yojana.top"
+      ],
+      "signals": [
+        "R01",
+        "R12",
+        "R13",
+        "R16",
+        "R17",
+        "R19"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "yojana",
+        "install this app"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR010",
+      "reportedAt": "2026-10-04",
+      "region": "Uttar Pradesh",
+      "scamType": "electricity_bill_threat",
+      "domains": [
+        "bijli-bill-pay.click"
+      ],
+      "signals": [
+        "R08",
+        "R07",
+        "R14",
+        "R16",
+        "R18",
+        "R21"
+      ],
+      "stages": [
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "connection kat jayega",
+        "anydesk"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR011",
+      "reportedAt": "2026-10-10",
+      "region": "Delhi",
+      "scamType": "electricity_bill_threat",
+      "domains": [
+        "bijli-bill-pay.click"
+      ],
+      "signals": [
+        "R08",
+        "R07",
+        "R11",
+        "R16",
+        "R21"
+      ],
+      "stages": [
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "connection kat jayega",
+        "processing fee"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR012",
+      "reportedAt": "2026-10-17",
+      "region": "Gujarat",
+      "scamType": "electricity_bill_threat",
+      "domains": [
+        "bijli-bill-pay.click"
+      ],
+      "signals": [
+        "R08",
+        "R07",
+        "R16",
+        "R18",
+        "R21"
+      ],
+      "stages": [
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "will be disconnected",
+        "anydesk"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR013",
+      "reportedAt": "2026-10-24",
+      "region": "Haryana",
+      "scamType": "electricity_bill_threat",
+      "domains": [
+        "bijli-bill-update.top"
+      ],
+      "signals": [
+        "R08",
+        "R07",
+        "R11",
+        "R16",
+        "R21"
+      ],
+      "stages": [
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "will be disconnected",
+        "processing fee"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR014",
+      "reportedAt": "2026-10-06",
+      "region": "Karnataka",
+      "scamType": "digital_arrest",
+      "domains": [],
+      "signals": [
+        "R04",
+        "R09",
+        "R10",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "cyber cell",
+        "do not tell anyone",
+        "safe account"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR015",
+      "reportedAt": "2026-10-12",
+      "region": "Tamil Nadu",
+      "scamType": "digital_arrest",
+      "domains": [],
+      "signals": [
+        "R04",
+        "R09",
+        "R10",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "cyber cell",
+        "arrest warrant",
+        "safe account"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR016",
+      "reportedAt": "2026-10-19",
+      "region": "Delhi",
+      "scamType": "digital_arrest",
+      "domains": [],
+      "signals": [
+        "R04",
+        "R09",
+        "R10",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "narcotics",
+        "do not disconnect the call",
+        "safe account"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR017",
+      "reportedAt": "2026-10-07",
+      "region": "Telangana",
+      "scamType": "task_job_scam",
+      "domains": [
+        "taskearn-pro.online"
+      ],
+      "signals": [
+        "R06",
+        "R11",
+        "R14",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "part time job",
+        "registration fee"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR018",
+      "reportedAt": "2026-10-13",
+      "region": "West Bengal",
+      "scamType": "task_job_scam",
+      "domains": [
+        "taskearn-pro.online"
+      ],
+      "signals": [
+        "R06",
+        "R11",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "earn daily",
+        "registration fee"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR019",
+      "reportedAt": "2026-10-21",
+      "region": "Uttar Pradesh",
+      "scamType": "task_job_scam",
+      "domains": [
+        "taskearn-pro.online"
+      ],
+      "signals": [
+        "R06",
+        "R14",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "complete tasks",
+        "registration fee"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR020",
+      "reportedAt": "2026-10-11",
+      "region": "Maharashtra",
+      "scamType": "fake_refund_upi_collect",
+      "domains": [
+        "refund-claim-upi.site"
+      ],
+      "signals": [
+        "R01",
+        "R05",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "refund approved",
+        "upi collect"
+      ],
+      "level": "SUSPICIOUS",
+      "synthetic": true
+    },
+    {
+      "id": "SR021",
+      "reportedAt": "2026-10-18",
+      "region": "Rajasthan",
+      "scamType": "fake_refund_upi_collect",
+      "domains": [
+        "refund-claim-upi.site"
+      ],
+      "signals": [
+        "R01",
+        "R05",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "refund approved",
+        "upi collect"
+      ],
+      "level": "SUSPICIOUS",
+      "synthetic": true
+    },
+    {
+      "id": "SR022",
+      "reportedAt": "2026-10-25",
+      "region": "Gujarat",
+      "scamType": "fake_refund_upi_collect",
+      "domains": [],
+      "signals": [
+        "R05",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "congratulations",
+        "upi collect"
+      ],
+      "level": "SUSPICIOUS",
+      "synthetic": true
+    },
+    {
+      "id": "SR023",
+      "reportedAt": "2026-10-16",
+      "region": "Uttar Pradesh",
+      "scamType": "sim_block_otp",
+      "domains": [],
+      "signals": [
+        "R07",
+        "R08",
+        "R19"
+      ],
+      "stages": [
+        "PRESSURE",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "sim will be blocked",
+        "otp bhejiye"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR024",
+      "reportedAt": "2026-10-23",
+      "region": "Bihar",
+      "scamType": "sim_block_otp",
+      "domains": [],
+      "signals": [
+        "R07",
+        "R08",
+        "R19"
+      ],
+      "stages": [
+        "PRESSURE",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "band ho jayega",
+        "otp bhejiye"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    },
+    {
+      "id": "SR025",
+      "reportedAt": "2026-10-27",
+      "region": "Delhi",
+      "scamType": "courier_customs",
+      "domains": [
+        "fedex-customs-clear.top"
+      ],
+      "signals": [
+        "R04",
+        "R07",
+        "R11",
+        "R16",
+        "R21"
+      ],
+      "stages": [
+        "TRUST",
+        "PRESSURE",
+        "ACCESS",
+        "EXPLOITATION"
+      ],
+      "keyPhrases": [
+        "courier parcel",
+        "customs"
+      ],
+      "level": "HIGH",
+      "synthetic": true
+    }
+  ]
+}

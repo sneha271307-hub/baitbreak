@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "notes": "Used by the lookalike_domain check (R15). A link is a lookalike if its hostname contains an organisation's token but the hostname is not one of that organisation's domains or a subdomain of them. As an extra check, flag hostnames within edit distance 2 of a trusted domain. Always treat links as text and never open them. Verify this list against official sources before you present it.",
+  "organisations": [
+    {
+      "name": "State Bank of India",
+      "tokens": [
+        "sbi"
+      ],
+      "domains": [
+        "sbi.co.in",
+        "onlinesbi.sbi",
+        "sbi.bank.in"
+      ]
+    },
+    {
+      "name": "HDFC Bank",
+      "tokens": [
+        "hdfc"
+      ],
+      "domains": [
+        "hdfcbank.com"
+      ]
+    },
+    {
+      "name": "ICICI Bank",
+      "tokens": [
+        "icici"
+      ],
+      "domains": [
+        "icicibank.com"
+      ]
+    },
+    {
+      "name": "Axis Bank",
+      "tokens": [
+        "axisbank"
+      ],
+      "domains": [
+        "axisbank.com"
+      ]
+    },
+    {
+      "name": "Paytm",
+      "tokens": [
+        "paytm"
+      ],
+      "domains": [
+        "paytm.com"
+      ]
+    },
+    {
+      "name": "PhonePe",
+      "tokens": [
+        "phonepe"
+      ],
+      "domains": [
+        "phonepe.com"
+      ]
+    },
+    {
+      "name": "NPCI (UPI)",
+      "tokens": [
+        "npci"
+      ],
+      "domains": [
+        "npci.org.in"
+      ]
+    },
+    {
+      "name": "UIDAI (Aadhaar)",
+      "tokens": [
+        "uidai",
+        "aadhaar",
+        "aadhar"
+      ],
+      "domains": [
+        "uidai.gov.in"
+      ]
+    },
+    {
+      "name": "Income Tax Department",
+      "tokens": [
+        "incometax"
+      ],
+      "domains": [
+        "incometax.gov.in"
+      ]
+    },
+    {
+      "name": "PM-KISAN",
+      "tokens": [
+        "pmkisan"
+      ],
+      "domains": [
+        "pmkisan.gov.in"
+      ]
+    },
+    {
+      "name": "Reserve Bank of India",
+      "tokens": [
+        "rbi"
+      ],
+      "domains": [
+        "rbi.org.in"
+      ]
+    },
+    {
+      "name": "EPFO",
+      "tokens": [
+        "epfindia",
+        "epfo"
+      ],
+      "domains": [
+        "epfindia.gov.in"
+      ]
+    },
+    {
+      "name": "Indian Cyber Crime Portal",
+      "tokens": [
+        "cybercrime"
+      ],
+      "domains": [
+        "cybercrime.gov.in"
+      ]
+    },
+    {
+      "name": "Government of India portal",
+      "tokens": [],
+      "domains": [
+        "india.gov.in"
+      ]
+    }
+  ]
+}

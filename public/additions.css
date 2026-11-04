@@ -1,0 +1,48 @@
+.auth-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+#guest-nav,
+#user-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#nav-user-name {
+    color: #7ff7ff;
+    font-size: 13px;
+}
+
+.login-nav-button,
+.register-nav-button,
+#logout-button {
+    padding: 10px 17px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-nav-button {
+    color: white;
+    border: 1px solid rgba(127,247,255,.35);
+}
+
+.register-nav-button {
+    background: #087fff;
+    color: white;
+}
+
+#logout-button {
+    color: #ff9da8;
+    background: transparent;
+    border: 1px solid rgba(255,100,120,.35);
+}
+
+[hidden] {
+    display: none !important;
+}

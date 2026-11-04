@@ -1,0 +1,9 @@
+# Extra packages for retraining / notebook / report.  pip install -r requirements-train.txt
+-r requirements.txt
+pandas==3.0.2
+matplotlib==3.10.8
+nbformat
+nbconvert
+ipykernel
+reportlab==4.4.10
+huggingface_hub        # only for fetch_external.py

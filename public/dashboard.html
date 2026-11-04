@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaitBreak | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+        <h2>BAITBREAK</h2>
+        <button id="logout-button">Logout</button>
+    </header>
+
+    <main class="dashboard-container">
+
+        <section class="welcome-section">
+            <h1 id="welcome-name">Welcome!</h1>
+            <p>Your personal digital safety dashboard.</p>
+        </section>
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <h3>Total Scans</h3>
+                <p id="total-scans">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>High-Risk Scans</h3>
+                <p id="high-risk">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Medium-Risk Scans</h3>
+                <p id="medium-risk">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Low-Risk Scans</h3>
+                <p id="low-risk">0</p>
+            </div>
+
+        </section>
+
+        <section class="history-section">
+    <h2>Scan History</h2>
+
+    <div class="history-controls">
+
+        <input
+            type="text"
+            id="search-history"
+            placeholder="Search scanned messages..."
+        >
+
+        <select id="risk-filter">
+            <option value="ALL">All Risk Levels</option>
+            <option value="HIGH">High Risk</option>
+            <option value="MEDIUM">Medium Risk</option>
+            <option value="LOW">Low Risk</option>
+        </select>
+
+        <select id="sort-history">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+        </select>
+
+    </div>
+
+    <div id="history-container">
+        <p>Loading your scan history...</p>
+    </div>
+</section>
+
+        <a href="index.html" class="back-button">
+            ← Back to Scanner
+        </a>
+
+    </main>
+
+    <script src="dashboard.js"></script>
+
+</body>
+</html>
