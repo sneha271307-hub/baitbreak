@@ -12,7 +12,7 @@ The platform analyzes suspicious content using a combination of **rule-based det
 
 ## 🌐 Live Demo
 
-🚀 **Live Website:** https://baitbreak.vercel.app
+🚀 **Live Website:** https://baitbreak-bvi9.vercel.app/
 
 📂 **GitHub Repository:** https://github.com/sneha271307-hub/baitbreak
 
