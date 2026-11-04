@@ -35,7 +35,7 @@ loginForm.addEventListener("submit", async (event) => {
     loginButton.innerHTML = "<span>Signing in...</span>";
 
     try {
-        const response = await fetch("/api/auth/login", {
+        const response = await fetch("https://baitbreak.onrender.com/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
